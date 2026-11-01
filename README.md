@@ -28,3 +28,15 @@ Static landing page (`index.html`) plus Vercel serverless functions that power "
 - `HIRD_FILE_SECRET` (optional) signs download links. Defaults to a key derived from the API key.
 
 Skills claude.ai users create in their own account are not visible to the API. Upload the skill folder to the API workspace first, then list its id in `HIRD_CUSTOM_SKILLS`.
+
+## Jarvis
+
+`/jarvis` is Hird.ai's operations chief of staff: live Stripe revenue (balance, last 30 days, monthly recurring, open and overdue invoices), dev status from GitHub (open pull requests, latest deploys, recent commits), and a Claude-written briefing with today's priorities and sales and marketing moves. You can also ask it questions. It only reads: it can't move money, merge code or email anyone. It's not linked from the site and isn't indexed.
+
+The page calls `api/jarvis.js`; the engine is `api/_jarvis-core.js`, an identical copy in every Joslin Enterprises repo, so change it there and copy it across. Set these in Vercel → Settings → Environment Variables, then redeploy:
+
+- `JARVIS_ACCESS_CODE` (required): the passphrase the page asks for. Jarvis stays locked until it's set.
+- `ANTHROPIC_API_KEY`: Claude, for briefings and questions (the same key as Talk to the team).
+- `JARVIS_STRIPE_KEY`: a restricted Stripe key with Read on Balance, Charges, Subscriptions and Invoices.
+- `GITHUB_TOKEN`: a fine-grained token with read-only Contents, Pull requests and Deployments on this repo.
+- `JARVIS_MODEL` (optional): default `claude-sonnet-5-5`.
