@@ -1,1 +1,7 @@
-{ "name": "hird-ai-site", "private": true, "type": "module", "engines": { "node": ">=20" } }
+{
+  "name": "hird-ai-site",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "dependencies": { "@anthropic-ai/sdk": "0.135.0" }
+}

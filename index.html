@@ -132,13 +132,18 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 .levels b{font:500 .82rem var(--mono);color:var(--accent);letter-spacing:.05em}
 
 /* roles */
-.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:2px solid var(--fg)}
-.role{padding:26px 22px 8px 0;display:grid;gap:12px;align-content:start}
-.role + .role{padding-left:22px;border-left:1px solid var(--line)}
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+.role{padding:22px;display:grid;gap:12px;align-content:start;grid-template-rows:auto auto 1fr auto auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.role-top{display:flex;gap:12px;align-items:center}
+.role-top .av{width:40px;height:40px;font-size:.95rem}
 .role .code{font:500 .78rem var(--mono);color:var(--gold)}
-.role ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.94rem;display:grid;gap:6px}
-@media (max-width:980px){.roles{grid-template-columns:repeat(2,1fr)}.role:nth-child(3){padding-left:0;border-left:0}.role{border-top:1px solid var(--line)}}
-@media (max-width:560px){.roles{grid-template-columns:1fr}.role,.role + .role{padding-left:0;border-left:0}}
+.role h3{margin:0}
+.role ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.94rem;display:grid;gap:6px;align-content:start}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font:500 .72rem var(--mono);border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted)}
+.role .talkto{justify-self:start;font:600 .88rem var(--body);background:transparent;border:0;padding:0;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:980px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.roles{grid-template-columns:minmax(0,1fr)}}
 
 /* steps */
 .steps{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
@@ -219,21 +224,24 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
 
 
 /* talk */
-.talk{display:grid;grid-template-columns:280px 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);margin-top:40px;min-height:520px}
+.talk{display:grid;grid-template-columns:260px minmax(0,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);margin-top:40px;min-height:640px}
 .talk > *{min-width:0}
-.people{border-right:1px solid var(--line);background:var(--sunk);display:grid;align-content:start}
+.people{border-right:1px solid var(--line);background:var(--sunk);display:grid;align-content:start;max-height:640px;overflow-y:auto}
+.bub.file{background:transparent;border:1px solid var(--line);align-self:flex-start;white-space:normal}
+.bub.file a{font-weight:600;color:var(--accent)}
+.bub.file small{display:block;color:var(--muted);font:500 .72rem var(--mono);margin-top:2px}
 .person{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;padding:16px 18px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--fg);text-align:left;cursor:pointer;font:inherit}
 .person[aria-pressed="true"]{background:var(--surface);box-shadow:inset 3px 0 0 var(--accent)}
 .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 1rem var(--display);color:var(--accent-ink);background:var(--accent);position:relative}
 .av::after{content:"";position:absolute;right:0;bottom:1px;width:11px;height:11px;border-radius:50%;background:#2DBE6C;border:2px solid var(--sunk)}
 .person b{display:block;font-weight:600}
 .person div span{font-size:.84rem;color:var(--muted)}
-.convo{display:grid;grid-template-rows:auto 1fr auto auto;grid-template-columns:minmax(0,1fr);min-height:520px}
+.convo{display:grid;grid-template-rows:auto 1fr auto auto;grid-template-columns:minmax(0,1fr);min-height:640px}
 .convo > *{min-width:0}
 .convo-head{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
 .convo-head b{font:700 1.05rem var(--display)}
 .convo-head span{font:500 .75rem var(--mono);color:var(--muted)}
-.msgs{padding:20px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:440px}
+.msgs{padding:20px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:520px}
 .bub{max-width:78%;padding:10px 14px;border-radius:16px;font-size:.96rem;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
 .bub.them{background:var(--sunk);border-bottom-left-radius:4px;align-self:flex-start}
 .bub.me{background:var(--accent);color:var(--accent-ink);border-bottom-right-radius:4px;align-self:flex-end}
@@ -247,7 +255,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
 .compose{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}
 .compose input{flex:1;min-width:0;font:inherit;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
 .compose .btn{padding:.6rem 1.1rem}
-@media (max-width:760px){.talk{grid-template-columns:minmax(0,1fr)}.convo-head span{display:none}.people{grid-template-columns:repeat(4,1fr);border-right:0;border-bottom:1px solid var(--line)}.person{grid-template-columns:1fr;justify-items:center;text-align:center;padding:12px 6px;border-bottom:0}.person div span{display:none}.av{width:36px;height:36px}.person[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--accent)}.bub{max-width:88%}}
+@media (max-width:760px){.talk{grid-template-columns:minmax(0,1fr)}.convo-head span{display:none}.people{display:flex;overflow-x:auto;max-height:none;border-right:0;border-bottom:1px solid var(--line)}.person{flex:0 0 76px}.person{grid-template-columns:1fr;justify-items:center;text-align:center;padding:12px 6px;border-bottom:0}.person div span{display:none}.av{width:36px;height:36px}.person[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--accent)}.bub{max-width:88%}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.btn:hover{transform:none}}
 </style>
@@ -278,7 +286,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
     <div class="stack">
       <span class="eyebrow">Your AI hird, sworn to your company</span>
       <h1>Hand off the work. <em>Keep the receipts.</em></h1>
-      <p class="lede">Hird gives you a Chief of Staff, a CTO, a Growth lead and a Finance lead that work inside your inbox, codebase, ad accounts and books. You decide what each one may do alone. Everything they do lands in a ledger you can read, search and undo.</p>
+      <p class="lede">Hird gives you nine AI specialists, from a Chief of Staff and a CTO to Sales, Support and Legal, that work inside your inbox, codebase, ad accounts and books. You decide what each one may do alone. Everything they do lands in a ledger you can read, search and undo.</p>
       <div class="ctas">
         <a class="btn primary" href="#pricing">Start 14-day trial</a>
         <a class="btn" href="#dial">Set your autonomy dial</a>
@@ -331,12 +339,17 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
   <section id="team">
     <div class="wrap">
       <span class="eyebrow">The team</span>
-      <h2 style="margin-top:14px;max-width:20ch">Four roles that share one memory of your business.</h2>
+      <h2 style="margin-top:14px;max-width:22ch">Nine specialists that share one memory of your business.</h2>
       <div class="roles">
-        <article class="role"><span class="code">Sarah · Chief of Staff</span><h3>Runs your day</h3><ul><li>Inbox triage and replies in your voice</li><li>Calendar defense and meeting prep</li><li>Morning brief in Slack or iMessage</li></ul></article>
-        <article class="role"><span class="code">Mike · CTO</span><h3>Ships code</h3><ul><li>Fixes bugs from Sentry or GitHub issues</li><li>Opens tested pull requests, never pushes to main</li><li>Builds landing pages and internal tools</li></ul></article>
-        <article class="role"><span class="code">Jessica · Growth</span><h3>Finds customers</h3><ul><li>Meta and Google Ads budget tuning</li><li>SEO audits and page updates</li><li>Lead research and outbound drafts</li></ul></article>
-        <article class="role"><span class="code">David · Finance</span><h3>Protects cash</h3><ul><li>Chases late invoices and open quotes</li><li>Categorizes spend in QuickBooks or Xero</li><li>Flags unused subscriptions</li></ul></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">S</span><span class="code">Sarah · Chief of Staff</span></div><h3>Runs your day</h3><ul><li>Inbox triage and replies in your voice</li><li>Calendar defense and meeting prep</li><li>Morning brief in Slack or iMessage</li></ul><div class="chips" aria-label="Files Sarah can make"><span>Word docs</span><span>PDFs</span></div><button type="button" class="talkto" data-agent="sarah">Talk to Sarah</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">M</span><span class="code">Mike · CTO</span></div><h3>Ships code</h3><ul><li>Fixes bugs from Sentry or GitHub issues</li><li>Opens tested pull requests, never pushes to main</li><li>Builds landing pages and internal tools</li></ul><div class="chips" aria-label="Files Mike can make"><span>Spreadsheets</span><span>Word docs</span></div><button type="button" class="talkto" data-agent="mike">Talk to Mike</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">J</span><span class="code">Jessica · Growth</span></div><h3>Finds customers</h3><ul><li>Meta and Google Ads budget tuning</li><li>SEO audits and page updates</li><li>Lead research and outbound drafts</li></ul><div class="chips" aria-label="Files Jessica can make"><span>Slide decks</span><span>Spreadsheets</span></div><button type="button" class="talkto" data-agent="jessica">Talk to Jessica</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">D</span><span class="code">David · Finance</span></div><h3>Protects cash</h3><ul><li>Chases late invoices and open quotes</li><li>Categorizes spend in QuickBooks or Xero</li><li>Flags unused subscriptions</li></ul><div class="chips" aria-label="Files David can make"><span>Spreadsheets</span><span>PDFs</span></div><button type="button" class="talkto" data-agent="david">Talk to David</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">E</span><span class="code">Emily · Customer Support</span></div><h3>Keeps customers happy</h3><ul><li>Answers tickets in Zendesk, Intercom or email</li><li>Writes help-center articles from repeat questions</li><li>Escalates refunds and angry customers to you</li></ul><div class="chips" aria-label="Files Emily can make"><span>Word docs</span></div><button type="button" class="talkto" data-agent="emily">Talk to Emily</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">C</span><span class="code">Chris · Sales</span></div><h3>Closes deals</h3><ul><li>Follows up on every lead within minutes</li><li>Keeps HubSpot or Pipedrive clean</li><li>Drafts proposals and pitch decks</li></ul><div class="chips" aria-label="Files Chris can make"><span>Slide decks</span><span>Word docs</span></div><button type="button" class="talkto" data-agent="chris">Talk to Chris</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">R</span><span class="code">Rachel · People & Hiring</span></div><h3>Builds your team</h3><ul><li>Writes job posts and screens applicants</li><li>Schedules interviews and sends offers</li><li>Runs onboarding checklists for new hires</li></ul><div class="chips" aria-label="Files Rachel can make"><span>Word docs</span><span>PDFs</span></div><button type="button" class="talkto" data-agent="rachel">Talk to Rachel</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">K</span><span class="code">Kevin · Legal & Contracts</span></div><h3>Reads the fine print</h3><ul><li>Flags risky clauses in contracts and NDAs</li><li>Drafts simple agreements from your templates</li><li>Tracks renewals and sends DocuSign packets</li></ul><div class="chips" aria-label="Files Kevin can make"><span>Word docs</span><span>PDFs</span></div><button type="button" class="talkto" data-agent="kevin">Talk to Kevin</button></article>
+        <article class="role"><div class="role-top"><span class="av" aria-hidden="true">M</span><span class="code">Megan · Content & Social</span></div><h3>Tells your story</h3><ul><li>Plans a month of posts in your voice</li><li>Writes newsletters, blogs and captions</li><li>Turns wins into case studies</li></ul><div class="chips" aria-label="Files Megan can make"><span>Slide decks</span><span>Word docs</span></div><button type="button" class="talkto" data-agent="megan">Talk to Megan</button></article>
       </div>
     </div>
   </section>
@@ -346,7 +359,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
     <div class="wrap">
       <span class="eyebrow">Talk to the team</span>
       <h2 style="margin-top:14px;max-width:22ch">Ask them anything. They answer like colleagues.</h2>
-      <p class="lede" style="margin-top:16px">This is a live conversation with Hird's agents. Ask Mike how he'd fix a bug, ask David about chasing a late invoice, or just say hi.</p>
+      <p class="lede" style="margin-top:16px">This is a live conversation with Hird's agents. Ask Mike how he'd fix a bug, ask Jessica for a quick pitch deck, have David build a cash-flow sheet, or just say hi. When they make a file, you can download it.</p>
       <div class="talk">
         <div class="people" id="people" role="group" aria-label="Choose who to talk to"></div>
         <div class="convo">
@@ -448,7 +461,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
           <div class="name"><h3>Operator</h3><span>Most chosen</span></div>
           <div class="price">$149<small>/month</small></div>
           <p class="fine">The full team for a company of one to ten.</p>
-          <ul><li>All four roles, shared memory</li><li>Unlimited connected tools</li><li>Cloud browser and voice notes</li><li>$60 of AI usage included</li><li>Weekly Saga and 1-year ledger</li></ul>
+          <ul><li>All nine agents, shared memory</li><li>Unlimited connected tools</li><li>Cloud browser and voice notes</li><li>$60 of AI usage included</li><li>Weekly Saga and 1-year ledger</li></ul>
           <a class="btn primary" href="#top">Start trial</a>
         </article>
         <article class="plan">
@@ -555,10 +568,15 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
 
   // Talk to the team
   const AG=[
-    {id:"sarah",n:"Sarah",r:"Chief of Staff",hi:"Morning! I'm Sarah. I keep the inbox, calendar and the rest of your day under control. What's eating your time this week?",s:["Can you handle my inbox?","How do approvals work?","What would my first week look like?"]},
-    {id:"mike",n:"Mike",r:"CTO",hi:"Hey, Mike here. I fix bugs, ship features and open pull requests you can review. What are you building?",s:["Can you fix a bug in my app?","Do you push to production?","What stack do you work with?"]},
-    {id:"jessica",n:"Jessica",r:"Growth",hi:"Hi! I'm Jessica. Ads, SEO and finding your next customers is my thing. Where do your customers come from today?",s:["My ads are too expensive","Can you improve my SEO?","Help me find leads"]},
-    {id:"david",n:"David",r:"Finance",hi:"Hi, I'm David. I chase late invoices, tidy the books and spot money leaking out. What's your cash situation like?",s:["Clients pay me late","Can you work with QuickBooks?","Find subscriptions I don't use"]}
+    {id:"sarah",n:"Sarah",r:"Chief of Staff",hi:"Morning! I'm Sarah. I keep the inbox, calendar and the rest of your day under control. What's eating your time this week?",s:["Can you handle my inbox?","How do approvals work?","Make me a one-page weekly plan as a PDF"]},
+    {id:"mike",n:"Mike",r:"CTO",hi:"Hey, Mike here. I fix bugs, ship features and open pull requests you can review. What are you building?",s:["Can you fix a bug in my app?","Do you push to production?","Write a short tech-debt plan as a Word doc"]},
+    {id:"jessica",n:"Jessica",r:"Growth",hi:"Hi! I'm Jessica. Ads, SEO and finding your next customers is my thing. Where do your customers come from today?",s:["My ads are too expensive","Help me find leads","Make a 4-slide growth plan for a coffee shop"]},
+    {id:"david",n:"David",r:"Finance",hi:"Hi, I'm David. I chase late invoices, tidy the books and spot money leaking out. What's your cash situation like?",s:["Clients pay me late","Find subscriptions I don't use","Build me a 12-month cash-flow spreadsheet"]},
+    {id:"emily",n:"Emily",r:"Customer Support",hi:"Hey, I'm Emily! I answer your customers so you don't have to live in the support inbox. What do people ask you most?",s:["Can you answer tickets for me?","What happens with angry customers?","Write a refund-policy help article"]},
+    {id:"chris",n:"Chris",r:"Sales",hi:"Chris here. I follow up on leads fast and keep deals moving. How do you sell today, calls, demos, quotes?",s:["Leads go cold on me","Can you work in HubSpot?","Make a 5-slide pitch deck for a cleaning company"]},
+    {id:"rachel",n:"Rachel",r:"People & Hiring",hi:"Hi, I'm Rachel. I help you hire well and get new people up to speed. Who are you looking to bring on?",s:["Write a job post for a part-time bookkeeper","How do you screen applicants?","Make a new-hire onboarding checklist"]},
+    {id:"kevin",n:"Kevin",r:"Legal & Contracts",hi:"Hey, Kevin here. I read the fine print so you don't miss the clause that bites. Got a contract on your desk?",s:["What should I watch for in an NDA?","Do you replace my lawyer?","Draft a simple mutual NDA"]},
+    {id:"megan",n:"Megan",r:"Content & Social",hi:"Hi! I'm Megan. I keep your socials and newsletter going in your voice. What does your business sound like?",s:["Plan a week of posts for me","How do you match my voice?","Make a 3-slide content calendar"]}
   ];
   const hist={};AG.forEach(a=>hist[a.id]=[{role:"assistant",content:a.hi}]);
   let cur=AG[0],busy=false;
@@ -567,30 +585,32 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;font-size:.9rem;
     b.innerHTML='<span class="av" aria-hidden="true">'+a.n[0]+'</span><div><b>'+a.n+'</b><span>'+a.r+'</span></div>';
     b.addEventListener("click",()=>{cur=a;render()});people.appendChild(b)});
   function bubble(cls,text){const d=document.createElement("div");d.className="bub "+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+  function fileBubble(f){const d=document.createElement("div");d.className="bub file";const l=document.createElement("a");l.href=f.url;l.textContent="Download "+f.name;l.setAttribute("download","");const s=document.createElement("small");s.textContent="Made by "+cur.n;d.append(l,s);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
   function render(){
     people.querySelectorAll(".person").forEach(b=>b.setAttribute("aria-pressed",b.id==="p-"+cur.id?"true":"false"));
     document.getElementById("cname").textContent=cur.n;document.getElementById("crole").textContent=cur.r+" · usually replies in seconds";
     inp.placeholder="Message "+cur.n+"…";msgs.innerHTML="";
-    hist[cur.id].forEach(m=>bubble(m.role==="user"?"me":"them",m.content));
+    hist[cur.id].forEach(m=>{bubble(m.role==="user"?"me":"them",m.content);(m.files||[]).forEach(fileBubble)});
     sug.innerHTML="";if(hist[cur.id].length<2)cur.s.forEach(t=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.addEventListener("click",()=>send(t));sug.appendChild(b)});
   }
   async function send(text){
     text=(text||"").trim();if(!text||busy)return;busy=true;sug.innerHTML="";
     const a=cur,h=hist[a.id];h.push({role:"user",content:text});bubble("me",text);inp.value="";
     const t=document.createElement("div");t.className="bub them typing";t.setAttribute("aria-label",a.n+" is typing");t.innerHTML="<i></i><i></i><i></i>";msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
-    let reply,note;
+    let reply,note,files=[];const slow=setTimeout(()=>{if(cur===a)t.setAttribute("aria-label",a.n+" is working on it");const n=document.createElement("div");n.className="bub note";n.id="slow";n.textContent=a.n+" is putting that together. Files can take up to a minute.";if(cur===a){msgs.insertBefore(n,t);msgs.scrollTop=msgs.scrollHeight}},6000);
     try{
-      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({agent:a.id,messages:h.slice(-14)})});
+      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({agent:a.id,messages:h.slice(-14).map(m=>({role:m.role,content:m.content}))})});
       const j=await res.json().catch(()=>({}));
-      if(res.ok&&j.reply)reply=j.reply;else note=j.error||"Chat isn't connected on this copy of the site yet.";
+      if(res.ok&&j.reply){reply=j.reply;files=Array.isArray(j.files)?j.files.filter(f=>f&&typeof f.url==="string"&&f.url.startsWith("/api/file?")):[]}else note=j.error||"Chat isn't connected on this copy of the site yet.";
     }catch(e){note="Chat runs on the live Hird site. This preview can't reach it."}
     await new Promise(r=>setTimeout(r,reduce?0:500));
-    t.remove();
-    if(reply){h.push({role:"assistant",content:reply});if(cur===a)bubble("them",reply)}
+    clearTimeout(slow);t.remove();const sn=document.getElementById("slow");if(sn)sn.remove();
+    if(reply){h.push({role:"assistant",content:reply,files});if(cur===a){bubble("them",reply);files.forEach(fileBubble)}}
     else{h.pop();if(cur===a)bubble("note",note)}
     busy=false;inp.focus();
   }
   form.addEventListener("submit",e=>{e.preventDefault();send(inp.value)});
+  document.querySelectorAll(".talkto").forEach(b=>b.addEventListener("click",()=>{const a=AG.find(x=>x.id===b.dataset.agent);if(!a)return;cur=a;render();document.getElementById("talk").scrollIntoView({behavior:reduce?"auto":"smooth"});setTimeout(()=>inp.focus({preventScroll:true}),reduce?0:500)}));
   render();
 
   // Usage estimate
