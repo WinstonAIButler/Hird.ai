@@ -4,6 +4,7 @@ Static landing page (`index.html`) plus Vercel serverless functions that power "
 
 - `api/chat.js` talks to Claude with each agent's persona and Agent Skills.
 - `api/file.js` serves files an agent made (decks, spreadsheets, docs, PDFs). It only accepts signed links from `api/chat.js`.
+- `overview/index.html` is the executive company overview, served at `/overview` (not indexed by search engines).
 - `api/_agents.js` holds the nine personas and which skills each one gets. Files starting with `_` are not routes.
 
 ## Agents and skills
