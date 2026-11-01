@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 243 72" width="243" height="72" role="img" aria-label="Saga">
+  <title>Saga</title>
+  <g transform="translate(2.00,4.32) scale(0.9900)">
+    <path d="M42.81 16.07 A11.5 11.5 0 1 0 32.00 31.50 A11.5 11.5 0 1 1 22.58 49.60" fill="none" stroke="#0A6B5A" stroke-width="8.5" stroke-linecap="round"/><circle cx="49.81" cy="10.07" r="4.6" fill="#0A6B5A" opacity="0.55"/>
+  </g>
+  <text x="73.4" y="44" font-family="Bricolage Grotesque, Avenir Next, Segoe UI, Helvetica, Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="-1" fill="#0F1A17">Saga</text>
+  <text x="74.9" y="60" font-family="Bricolage Grotesque, Avenir Next, Segoe UI, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="2.6" fill="#0F1A17" opacity="0.7">AI OPERATING TEAM</text>
+</svg>
