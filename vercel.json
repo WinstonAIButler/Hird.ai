@@ -1,6 +1,7 @@
 {
   "functions": {
     "api/chat.js": { "maxDuration": 120 },
-    "api/file.js": { "maxDuration": 60 }
+    "api/file.js": { "maxDuration": 60 },
+    "api/jarvis.js": { "maxDuration": 120 }
   }
 }
